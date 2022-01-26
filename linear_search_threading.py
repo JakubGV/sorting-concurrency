@@ -1,12 +1,11 @@
-import threading
-import numpy as np
+from threading import Thread
 
 def thread_search(arr, x, start, end, kill, results):
   for i in range(start, end):
     if kill: 
       return
     if arr[i] == x:
-      kill = True
+      kill.append(True)
       results.append(i)
       return i
   
@@ -14,18 +13,18 @@ def thread_search(arr, x, start, end, kill, results):
   return -1
 
 def linear_search_threading(arr, x, num_threads):
-  kill = False
+  size = len(arr)
+  kill = []
   results = []
   threads = []
-  sections = np.array_split(arr, num_threads)
+  
+  for i in range(0, num_threads):
+    start = i * (size//num_threads)
+    end = (i+1) * (size//num_threads)
+    if i == num_threads - 1:
+      end = size
 
-  start = 0
-  end = 0
-  for section in sections:
-    length = len(section)
-    end = start + length
-    threads.append(threading.Thread(target=thread_search, args=(arr, x, start, end, kill, results), daemon=True))
-    start = end
+    threads.append(Thread(target=thread_search, args=(arr, x, start, end, kill, results), daemon=True))
 
   for thread in threads:
     thread.start()
