@@ -53,13 +53,13 @@ if __name__ == "__main__":
   to_sort_3 = to_sort_1.copy()
 
   normal_execution = time_sort(to_sort_1)
-  print('Normal execution:'.ljust(17), f'{normal_execution:.4f}s')
+  print('Normal execution:'.ljust(20), f'{normal_execution:.4f}s')
   
   with_threads = time_sort(to_sort_2, num_threads=argsDict['num_threads'])
-  print(f'{argsDict["num_threads"]} thread(s):'.ljust(17), f'{with_threads:.4f}s')
+  print(f'{argsDict["num_threads"]} thread(s):'.ljust(20), f'{with_threads:.4f}s')
   
   with_processes = time_sort(to_sort_3, num_processes=argsDict['num_processes'])
-  print(f'{argsDict["num_processes"]} process(es):'.ljust(17), f'{with_processes:.4f}s')
+  print(f'{argsDict["num_processes"]} process(es):'.ljust(20), f'{with_processes:.4f}s')
 
   end = time.time()
-  print('Execution took:'.ljust(17), f'{end-start:.4f}s')
+  print('Execution took:'.ljust(20), f'{end-start:.4f}s')
