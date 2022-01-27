@@ -11,7 +11,8 @@ def insertion_sort_threading(arr, num_threads):
     if i == num_threads - 1:
       end = size
 
-    threads.append(Thread(target=insertion_sort, args=(arr, start, end), daemon=True))
+    chunk = arr[start:end]
+    threads.append(Thread(target=insertion_sort, args=(chunk,), daemon=True))
 
   for thread in threads:
     thread.start()

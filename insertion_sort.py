@@ -1,6 +1,6 @@
-# Sort arr in-place using the insertion sort algorithm from [start, end)
-def insertion_sort(arr, start, end):
-  for i in range(start+1, end):
+# Sort arr in-place using the insertion sort algorithm
+def insertion_sort(arr):
+  for i in range(1, len(arr)):
     key = arr[i]
     j = i
     

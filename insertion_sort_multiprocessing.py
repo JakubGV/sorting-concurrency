@@ -11,7 +11,8 @@ def insertion_sort_multiprocessing(arr, num_processes):
     if i == num_processes - 1:
       end = size
     
-    processes.append(Process(target=insertion_sort, args=(arr, start, end), daemon=True))
+    chunk = arr[start:end]
+    processes.append(Process(target=insertion_sort, args=(chunk,), daemon=True))
 
   for process in processes:
     process.start()
