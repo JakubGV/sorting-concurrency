@@ -30,6 +30,7 @@ n | num_threads | num_processes | normal_time (s) | thread_time (s) | process_ti
 Key things to notice here are that as the input size increases, the more the concurrent implementations get an advantage. This intuitively makes sense as the 'fixed' cost of making extra threads/processes is dominated by the performance gains from parallelism. Another thing, the more threads and processes we created, the better it performed at the task. The system this was run on has 8 logical processors. When we ran the performance comparison with 8 processes, we were able to outperform normal, single-process execution.
 
 ## What I learned
+* Knowledge of the Python GIL
 * Using `argparse` for command line arguments
 * Using the `threading` library
 * Using the `multiprocessing` library

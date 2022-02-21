@@ -10,3 +10,18 @@ def insertion_sort(arr):
     arr[j] = key
 
   return
+
+# Sort in chunks to mimic the same behavior the thread and process functions go through
+def insertion_sort_single(arr, num_workers):
+  size = len(arr)
+  
+  for i in range(0, num_workers):
+    start = i * (size//num_workers)
+    end = (i+1) * (size//num_workers)
+    if i == num_workers - 1:
+      end = size
+
+    chunk = arr[start:end]
+    insertion_sort(chunk)
+
+  return
